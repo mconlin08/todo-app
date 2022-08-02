@@ -8,13 +8,13 @@ import (
 
 func main() {
 	fmt.Println("Starting Server")
+	server.InitializeDB()
 
 	router := gin.Default()
-	router.GET("/todos", server.GetTodos)
-	// router.GET("/books", getBooks)
-	// router.GET("books/:id", bookById)
-	// router.POST("/books", createBook)
-	// router.PATCH("/checkout", checkoutBook)
-	// router.PATCH("/return", returnBook)
+	router.GET("/todos", server.GetAllTodos)
+	router.GET("/todo", server.GetTodoById)
+	router.POST("/todo/create", server.CreateTodo)
+	router.PUT("/todo/update", server.UpdateTodo)
+	router.DELETE("todo/delete", server.DeleteTodo)
 	router.Run("localhost:8080")
 }
